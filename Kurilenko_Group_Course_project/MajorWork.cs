@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
+using System.Collections;
 
 
 namespace Kurilenko_Group_Course_project
@@ -23,6 +24,8 @@ namespace Kurilenko_Group_Course_project
             this.OpenFileName = S;// запам'ятати ім’я файлу для відкриття
         }
 
+
+
         // Вміст робочого об'єкта
         // Поля
         private System.DateTime TimeBegin; // час початку роботи програми
@@ -30,6 +33,12 @@ namespace Kurilenko_Group_Course_project
         private string Result; // Поле результату
         public bool Modify;
         private int Key; // поле ключа
+
+        public Stack myStack = new Stack();
+        public string[] myArr = new string[100];
+
+        public Queue myQueue = new Queue();
+        public string[] smyQueue = new string[100];
 
         // Методи
         public void Find(string Num) // пошук
