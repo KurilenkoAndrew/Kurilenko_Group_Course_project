@@ -91,6 +91,9 @@ S.Close();
         {
             this.Data = ""; // "" - ознака порожнього рядка
             this.Result = null; // для string- null
+            TimeBegin = DateTime.MinValue;
+            this.Modify = false;
+            this.Key = 0;
         }
         public bool SaveFileNameExists()
         {
@@ -219,11 +222,13 @@ S.Close();
                 D.Data = this.Data;
                 D.Result = Convert.ToString(this.Result);
                 D.Key = Key;
-                Key++;
-                BinaryFormatter BF = new BinaryFormatter(); // створення об'єкта для форматування BF.Serialize(S, D);
+                BinaryFormatter BF = new BinaryFormatter(); // створення об'єкта для форматування
+                BF.Serialize(S, D);
                 S.Flush(); // очищення буфера потоку
                 S.Close(); // закриття потоку
                 this.Modify = false; // Заборона повторного запису
+                D.Key = Key;
+                Key++;
             }
             catch
             {
